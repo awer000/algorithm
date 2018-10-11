@@ -1,7 +1,4 @@
 function ArrayList(arr = []) {
-  function swap(a, b) {
-    [arr[a], arr[b]] = [arr[b], [arr[a]]];
-  }
   this.insert = item => {
     arr.push(item);
   };
@@ -12,7 +9,7 @@ function ArrayList(arr = []) {
       for (let j = 0; j < arr.length - 1 - i; j++) {
         num++;
         if (arr[j] > arr[j + 1]) {
-          swap(j, j + 1);
+          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
         }
       }
     }
