@@ -83,9 +83,6 @@ function ArrayList(arr = []) {
   this.mergeSort = () => {
     arr = mergeSortRec(arr);
   };
-  const swapQuickSort = (arr, index1, index2) => {
-    [arr[index1], arr[index2]] = [arr[index2], arr[index1]];
-  };
 
   const partition = (arr, left, right) => {
     const pivot = arr[Math.floor((left + right) / 2)];
@@ -99,7 +96,7 @@ function ArrayList(arr = []) {
         j--;
       }
       if (i <= j) {
-        swapQuickSort(arr, i, j);
+        [arr[i], arr[j]] = [arr[j], arr[i]];
         i++;
         j--;
       }
@@ -130,7 +127,13 @@ function ArrayList(arr = []) {
     return arr.join();
   };
 }
-
-const arr = new ArrayList([3, 5, 1, 6, 4, 7, 2]);
+let list = [];
+for (let i = 1; i < 1000; i++) {
+  list.push(Math.floor(Math.random() * 1000));
+}
+list = [...new Set(list)];
+console.time("time");
+const arr = new ArrayList(list);
 arr.quickSort();
 console.log(arr.toString());
+console.timeEnd("time");
