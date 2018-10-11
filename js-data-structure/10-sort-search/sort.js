@@ -123,6 +123,27 @@ function ArrayList(arr = []) {
     quick(arr, 0, arr.length - 1);
   };
 
+  this.binarySearch = item => {
+    this.quickSort();
+
+    let low = 0,
+      mid,
+      element,
+      high = arr.length - 1;
+    while (low <= high) {
+      mid = Math.floor((low + high) / 2);
+      element = arr[mid];
+      if (element < item) {
+        low = mid + 1;
+      } else if (element > item) {
+        high = mid - 1;
+      } else {
+        return mid;
+      }
+    }
+    return -1;
+  };
+
   this.toString = () => {
     return arr.join();
   };
@@ -134,6 +155,5 @@ for (let i = 1; i < 1000; i++) {
 list = [...new Set(list)];
 console.time("time");
 const arr = new ArrayList(list);
-arr.quickSort();
-console.log(arr.toString());
+console.log(arr.binarySearch(199));
 console.timeEnd("time");
