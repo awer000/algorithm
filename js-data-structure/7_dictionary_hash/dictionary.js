@@ -48,16 +48,4 @@ function Dictionary() {
     return items;
   };
 }
-
-const dic = new Dictionary();
-
-dic.set("1", "1입니다.");
-dic.set("2", 2);
-
-console.log(dic.values());
-console.log(dic.getItems());
-console.log(dic.size());
-console.log(dic.keys());
-
-dic.remove("2");
-console.log(dic.getItems());
+module.exports = Dictionary;
